@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:music/bloc/boarding_bloc/boarding_bloc.dart';
-import 'package:music/bloc/boarding_bloc/boarding_state.dart';
-
-import '../../../res/app_colors.dart';
+import 'package:thepause_audio_player_app/core/res/app_colors.dart';
+import 'package:thepause_audio_player_app/presentation/bloc/boarding_bloc/boarding_bloc.dart';
+import 'package:thepause_audio_player_app/presentation/bloc/boarding_bloc/boarding_state.dart';
 
 class BoardingPage extends StatelessWidget {
   const BoardingPage(

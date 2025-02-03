@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../res/app_colors.dart';
+import '../../core/res/app_colors.dart';
 
 class CircularSoftButton extends StatelessWidget {
   double? radius;

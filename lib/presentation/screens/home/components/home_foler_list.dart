@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:layout_pro/responsive_layout.dart';
-import 'package:music/view/home/components/song_list_home.dart';
+import 'package:thepause_audio_player_app/core/res/app_colors.dart';
+import 'package:thepause_audio_player_app/core/res/app_svg.dart';
+import 'package:thepause_audio_player_app/core/utils/utils.dart';
+import 'package:thepause_audio_player_app/presentation/screens/home/components/song_list_home.dart';
 
 import '../../../bloc/album_bloc/album_bloc.dart';
 import '../../../bloc/album_bloc/album_event.dart';
-import '../../../res/app_colors.dart';
-import '../../../res/app_svg.dart';
-import '../../../utils/utils.dart';
 import '../../all_music/all_music.dart';
 
 class HomeFolderList extends StatelessWidget {
@@ -18,7 +18,9 @@ class HomeFolderList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 20,),
+        SizedBox(
+          height: 20,
+        ),
         Row(
           children: [
             const Text(
@@ -37,7 +39,8 @@ class HomeFolderList extends StatelessWidget {
               },
               child: const Text(
                 'See all',
-                style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+                style:
+                    TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
               ),
             )
           ],
@@ -56,28 +59,24 @@ class HomeFolderList extends StatelessWidget {
               desktopScreenCrossAxisCount: 4,
               builder: (context, index) {
                 return Padding(
-                  padding: !ResponsiveLayout.isLargeMobile(
-                      context) ?
-                  const EdgeInsets.only(
-                      top: 20, right: 20, left: 20) :
-                  const EdgeInsets.only(top: 20)
-                  ,
+                  padding: !ResponsiveLayout.isLargeMobile(context)
+                      ? const EdgeInsets.only(top: 20, right: 20, left: 20)
+                      : const EdgeInsets.only(top: 20),
                   child: GestureDetector(
                     onTap: () async {
-                      context.read<AlbumBloc>().add(
-                          FolderTapEvent(path: state.folders[index]['path'].toString(),
-                              folderName: state.folders[index]['name'].toString())
-                      );
-                      Utils.go(context: context, screen: const SongListFolder());
+                      context.read<AlbumBloc>().add(FolderTapEvent(
+                          path: state.folders[index]['path'].toString(),
+                          folderName: state.folders[index]['name'].toString()));
+                      Utils.go(
+                          context: context, screen: const SongListFolder());
                     },
                     child: Container(
                       alignment: Alignment.center,
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 5),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                       decoration: BoxDecoration(
                         color: backgroundColor,
-                        borderRadius: BorderRadius.circular(
-                            5),
+                        borderRadius: BorderRadius.circular(5),
                         boxShadow: [
                           BoxShadow(
                               color: shadowColor,
@@ -97,7 +96,9 @@ class HomeFolderList extends StatelessWidget {
                             color: Colors.orangeAccent,
                             size: 30,
                           ),
-                          const SizedBox(width: 10,),
+                          const SizedBox(
+                            width: 10,
+                          ),
                           Expanded(
                             flex: 2,
                             child: Column(
@@ -105,8 +106,7 @@ class HomeFolderList extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  state
-                                      .folders[index]['name'].toString(),
+                                  state.folders[index]['name'].toString(),
                                   overflow: TextOverflow.ellipsis,
                                   style: const TextStyle(
                                       color: Colors.black87,

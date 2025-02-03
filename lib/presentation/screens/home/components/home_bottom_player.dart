@@ -3,11 +3,11 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:thepause_audio_player_app/core/res/app_colors.dart';
+import 'package:thepause_audio_player_app/core/res/app_icons.dart';
+import 'package:thepause_audio_player_app/core/res/app_svg.dart';
 
 import '../../../bloc/player_bloc/player_bloc.dart';
-import '../../../res/app_colors.dart';
-import '../../../res/app_icons.dart';
-import '../../../res/app_svg.dart';
 
 class HomeBottomPlayer extends StatelessWidget {
   const HomeBottomPlayer({super.key});
@@ -81,7 +81,7 @@ class HomeBottomPlayer extends StatelessWidget {
                                     child: LinearProgressIndicator(
                                       borderRadius: BorderRadius.circular(10),
                                       backgroundColor:
-                                      Colors.grey.withOpacity(.1),
+                                          Colors.grey.withOpacity(.1),
                                       color: blueBackground,
                                       value: state.progress,
                                     ),
@@ -89,7 +89,9 @@ class HomeBottomPlayer extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            SizedBox(width: 20,),
+                            SizedBox(
+                              width: 20,
+                            ),
                             Row(
                               children: [
                                 GestureDetector(
@@ -120,7 +122,7 @@ class HomeBottomPlayer extends StatelessWidget {
                                     backgroundColor: blueBackground,
                                     child: Center(
                                       child:
-                                      BlocBuilder<PlayerBloc, PlayerState>(
+                                          BlocBuilder<PlayerBloc, PlayerState>(
                                         builder: (context, state) {
                                           return SvgPicture.asset(
                                             state.isPlaying

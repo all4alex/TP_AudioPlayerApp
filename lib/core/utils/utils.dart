@@ -48,9 +48,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:music/res/app_colors.dart';
-import 'package:music/res/app_images.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:thepause_audio_player_app/core/res/app_colors.dart';
+import 'package:thepause_audio_player_app/core/res/app_images.dart';
 
 class Utils {
   static go(
@@ -74,31 +74,26 @@ class Utils {
     return AppImages.imageList[Random().nextInt(13)]!;
   }
 
-  static Future<bool> initRequiredPermissions() async {
-    bool isPermissionsAccepted = false;
-    List<Permission> requiredPermissions = [
-      Permission.storage,
-      Permission.audio,
-      Permission.manageExternalStorage,
-    ];
+  static Future<bool> requestPermission() async {
+    await Permission.mediaLibrary.request();
+    await Permission.storage.request();
+    var status1 = await Permission.mediaLibrary.status;
 
-    for (var i = 0; i < requiredPermissions.length; i++) {
-      PermissionStatus permissionStatus = await requiredPermissions[i].status;
-      switch (permissionStatus) {
-        case PermissionStatus.granted:
-          isPermissionsAccepted = true;
-          break;
-        case PermissionStatus.permanentlyDenied:
-          break;
-        default:
+    if (status1.isGranted) {
+      return true;
+    } else {
+      Map<Permission, PermissionStatus> statuses = await [
+        Permission.mediaLibrary,
+        Permission.storage,
+        // Permission.manageExternalStorage,
+      ].request();
+      var temp1 = await Permission.mediaLibrary.status;
+      if (temp1.isGranted) {
+        return true;
+      } else {
+        return false;
       }
     }
-    return isPermissionsAccepted;
-  }
-
-  static Future<Map<Permission, PermissionStatus>> requestPermission(
-      {required List<Permission> data}) async {
-    return await data.request();
   }
 
   static String getGreetingMessage() {

@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:layout_pro/responsive_layout.dart';
-import 'package:music/bloc/home_bloc/home_bloc.dart';
-import 'package:music/bloc/home_bloc/home_state.dart';
-import 'package:music/bloc/player_bloc/player_bloc.dart';
-import 'package:music/utils/utils.dart';
-import 'package:music/view/all_music/all_music.dart';
-import 'package:music/view/home/components/song_widget.dart';
-import 'package:music/view/player/player.dart';
-
+import 'package:thepause_audio_player_app/core/res/app_colors.dart';
+import 'package:thepause_audio_player_app/core/utils/utils.dart';
+import 'package:thepause_audio_player_app/presentation/bloc/home_bloc/home_bloc.dart';
+import 'package:thepause_audio_player_app/presentation/bloc/home_bloc/home_state.dart';
+import 'package:thepause_audio_player_app/presentation/bloc/player_bloc/player_bloc.dart';
+import 'package:thepause_audio_player_app/presentation/screens/all_music/all_music.dart';
+import 'package:thepause_audio_player_app/presentation/screens/home/components/song_widget.dart';
+import 'package:thepause_audio_player_app/presentation/screens/player/player.dart';
 import '../../../bloc/album_bloc/album_bloc.dart';
 import '../../../bloc/album_bloc/album_event.dart';
-import '../../../res/app_colors.dart';
 
 class SongsList extends StatelessWidget {
   const SongsList({super.key});
@@ -48,9 +47,10 @@ class SongsList extends StatelessWidget {
             )
           ],
         ),
-
-        Expanded(child: BlocBuilder<HomeBloc, HomeState>(
-          buildWhen: (previous, current) => previous.songList!=current.songList,
+        Expanded(
+            child: BlocBuilder<HomeBloc, HomeState>(
+          buildWhen: (previous, current) =>
+              previous.songList != current.songList,
           builder: (context, state) {
             return ResponsiveLayout(
               mobileCrossAxisCount: 1,
@@ -67,7 +67,9 @@ class SongsList extends StatelessWidget {
                 final String image = Utils.getRandomImage();
                 return Padding(
                   padding: !ResponsiveLayout.isLargeMobile(context)
-                      ? const EdgeInsets.only(top: 15, )
+                      ? const EdgeInsets.only(
+                          top: 15,
+                        )
                       : const EdgeInsets.only(top: 15),
                   child: GestureDetector(
                     onTap: () {
@@ -83,8 +85,8 @@ class SongsList extends StatelessWidget {
                     },
                     child: Container(
                       alignment: Alignment.center,
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 5),
                       decoration: BoxDecoration(
                         color: backgroundColor,
                         borderRadius: BorderRadius.circular(5),
@@ -100,17 +102,17 @@ class SongsList extends StatelessWidget {
                         ],
                       ),
                       child: SongWidget(
-                          image: image,
-                          file: state.songList[index],
-                          name: state.songList[index].name.toString(),
-                          length: state.songList[index].length.toString(),),
+                        image: image,
+                        file: state.songList[index],
+                        name: state.songList[index].name.toString(),
+                        length: state.songList[index].length.toString(),
+                      ),
                     ),
                   ),
                 );
               },
               itemCount: state.songList.length,
             );
-
           },
         ))
       ],

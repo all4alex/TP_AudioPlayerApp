@@ -1,35 +1,50 @@
-import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
+// ignore_for_file: prefer_const_constructors
 
-import './src/app/pages/home/home_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:thepause_audio_player_app/core/db_helper/db_helper.dart';
+import 'package:thepause_audio_player_app/core/res/app_colors.dart';
+import 'package:thepause_audio_player_app/presentation/bloc/album_bloc/album_bloc.dart';
+import 'package:thepause_audio_player_app/presentation/bloc/boarding_bloc/boarding_bloc.dart';
+import 'package:thepause_audio_player_app/presentation/bloc/home_bloc/home_bloc.dart';
+import 'package:thepause_audio_player_app/presentation/bloc/player_bloc/player_bloc.dart';
+import 'package:thepause_audio_player_app/presentation/screens/intro/splash.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    FlutterCleanArchitecture.debugModeOn();
-
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(
-          // This is the theme of your application.
-          //
-          // Try running your application with "flutter run". You'll see the
-          // application has a blue toolbar. Then, without quitting the app, try
-          // changing the primarySwatch below to Colors.green and then invoke
-          // "hot reload" (press "r" in the console where you ran "flutter run",
-          // or simply save your changes to "hot reload" in a Flutter IDE).
-          // Notice that the counter didn't reset back to zero; the application
-          // is not restarted
-          // primarySwatch: Colors.blue,
-
-          ),
-      home: const HomePage(title: 'Flutter-based audio player app'),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => BoardingBLoc(pageController: PageController()),
+        ),
+        BlocProvider(
+          create: (_) => HomeBloc(dbHelper: DbHelper()),
+        ),
+        BlocProvider(
+          create: (_) => PlayerBloc(player: AudioPlayer()),
+        ),
+        BlocProvider(
+          create: (_) => AlbumBloc(pageController: PageController()),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          scaffoldBackgroundColor: backgroundColor,
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: SplashScreen(),
+      ),
     );
   }
 }

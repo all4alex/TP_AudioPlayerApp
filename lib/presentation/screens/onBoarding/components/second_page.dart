@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:music/view/onBoarding/components/boarding_page.dart';
+import 'package:thepause_audio_player_app/presentation/screens/onBoarding/components/boarding_page.dart';
 
 class SecondPage extends StatelessWidget {
   const SecondPage({super.key});

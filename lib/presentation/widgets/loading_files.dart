@@ -4,9 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:layout_pro/responsive_layout.dart';
 import 'package:shimmer_effect/shimmer_effect.dart';
-
-import '../res/app_colors.dart';
-import '../res/app_svg.dart';
+import '../../core/res/app_colors.dart';
+import '../../core/res/app_svg.dart';
 
 class FilesLoading extends StatelessWidget {
   const FilesLoading({super.key});

@@ -3,13 +3,14 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:music/bloc/home_bloc/home_bloc.dart';
-import 'package:music/bloc/home_bloc/home_state.dart';
-import 'package:music/res/app_colors.dart';
-import 'package:music/res/app_svg.dart';
-import 'package:music/utils/utils.dart';
-import 'package:music/view/player/player.dart';
+
 import 'package:shimmer_effect/shimmer_effect.dart';
+import 'package:thepause_audio_player_app/core/res/app_colors.dart';
+import 'package:thepause_audio_player_app/core/res/app_svg.dart';
+import 'package:thepause_audio_player_app/core/utils/utils.dart';
+import 'package:thepause_audio_player_app/presentation/bloc/home_bloc/home_bloc.dart';
+import 'package:thepause_audio_player_app/presentation/bloc/home_bloc/home_state.dart';
+import 'package:thepause_audio_player_app/presentation/screens/player/player.dart';
 
 import '../../../bloc/player_bloc/player_bloc.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:music/model/audio_file_model.dart';
+import 'package:thepause_audio_player_app/core/res/app_colors.dart';
 
-import '../../../res/app_colors.dart';
+import '../../../../data/model/audio_file_model.dart';
 
 class SongTitle extends StatelessWidget {
   const SongTitle({super.key, required this.file});
@@ -9,12 +9,13 @@ class SongTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 70,bottom: 60),
+      padding: const EdgeInsets.only(top: 70, bottom: 60),
       child: Column(
         children: [
-
           Text(
-            file.name.toString().length>20? '${file.name.toString().substring(0,20)}...':file.name.toString(),
+            file.name.toString().length > 20
+                ? '${file.name.toString().substring(0, 20)}...'
+                : file.name.toString(),
             style: const TextStyle(
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
@@ -27,7 +28,6 @@ class SongTitle extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 fontSize: 12),
           ),
-
         ],
       ),
     );

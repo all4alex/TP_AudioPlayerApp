@@ -4,8 +4,8 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:music/db_helper/db_helper.dart';
-import 'package:music/model/audio_file_model.dart';
+import 'package:thepause_audio_player_app/core/db_helper/db_helper.dart';
+import 'package:thepause_audio_player_app/data/model/audio_file_model.dart';
 
 part 'player_event.dart';
 part 'player_state.dart';
@@ -134,7 +134,6 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
     } else {
       await dbHelper.insert(event.file);
       emit(state.copyWith(isFavourite: true));
-
     }
   }
 

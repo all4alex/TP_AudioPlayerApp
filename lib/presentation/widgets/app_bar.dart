@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:music/utils/utils.dart';
-
-import '../res/app_svg.dart';
+import '../../core/res/app_svg.dart';
+import '../../core/utils/utils.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key, this.title, this.preIcon, this.postIcon});

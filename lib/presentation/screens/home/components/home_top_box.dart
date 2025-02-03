@@ -2,10 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:music/res/app_images.dart';
-import 'package:music/res/app_svg.dart';
-
-import '../../../res/app_colors.dart';
+import 'package:thepause_audio_player_app/core/res/app_colors.dart';
+import 'package:thepause_audio_player_app/core/res/app_images.dart';
+import 'package:thepause_audio_player_app/core/res/app_svg.dart';
 
 class HomeIntroBox extends StatelessWidget {
   const HomeIntroBox({super.key});
@@ -20,9 +19,10 @@ class HomeIntroBox extends StatelessWidget {
           color: backgroundColor,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
-            BoxShadow(color: shadowColor, offset: const Offset(8, 6), blurRadius: 12),
+            BoxShadow(
+                color: shadowColor, offset: const Offset(8, 6), blurRadius: 12),
             const BoxShadow(
-                color: Colors.white, offset:  Offset(-8, -6), blurRadius: 12),
+                color: Colors.white, offset: Offset(-8, -6), blurRadius: 12),
           ],
         ),
         child: Stack(
@@ -112,17 +112,24 @@ class HomeIntroBox extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              const Text('Listen',style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12
-                              ),),
-                              const SizedBox(width: 10,),
+                              const Text(
+                                'Listen',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
                               CircleAvatar(
                                 radius: 11,
                                 backgroundColor: Colors.white,
                                 child: Center(
-                                  child: SvgPicture.asset(AppSvg.play,color: Colors.grey,),
+                                  child: SvgPicture.asset(
+                                    AppSvg.play,
+                                    color: Colors.grey,
+                                  ),
                                 ),
                               )
                             ],

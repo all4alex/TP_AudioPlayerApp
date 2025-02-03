@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:music/bloc/player_bloc/player_bloc.dart';
-import 'package:music/model/audio_file_model.dart';
-
-import '../../../res/app_colors.dart';
-import '../../../res/app_svg.dart';
-import '../../../common_widget/soft_button.dart';
+import 'package:thepause_audio_player_app/core/res/app_colors.dart';
+import 'package:thepause_audio_player_app/core/res/app_svg.dart';
+import 'package:thepause_audio_player_app/data/model/audio_file_model.dart';
+import 'package:thepause_audio_player_app/presentation/bloc/player_bloc/player_bloc.dart';
+import 'package:thepause_audio_player_app/presentation/widgets/soft_button.dart';
 
 class SongCircleContainer extends StatelessWidget {
   const SongCircleContainer(

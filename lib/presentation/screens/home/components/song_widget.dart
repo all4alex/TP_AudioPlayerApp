@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:music/bloc/home_bloc/home_event.dart';
-import 'package:music/model/audio_file_model.dart';
-import 'package:music/res/app_colors.dart';
-import 'package:music/utils/utils.dart';
-import 'package:music/view/common_widget/soft_button.dart';
+import 'package:thepause_audio_player_app/core/res/app_colors.dart';
+import 'package:thepause_audio_player_app/core/res/app_svg.dart';
+import 'package:thepause_audio_player_app/core/utils/utils.dart';
+import 'package:thepause_audio_player_app/data/model/audio_file_model.dart';
+import 'package:thepause_audio_player_app/presentation/bloc/home_bloc/home_event.dart';
+import 'package:thepause_audio_player_app/presentation/widgets/soft_button.dart';
 
 import '../../../bloc/home_bloc/home_bloc.dart';
 import '../../../bloc/player_bloc/player_bloc.dart';
-import '../../../res/app_svg.dart';
 
 class SongWidget extends StatelessWidget {
-  const SongWidget({super.key, required this.image, required this.name, required this.length, required this.file});
+  const SongWidget(
+      {super.key,
+      required this.image,
+      required this.name,
+      required this.length,
+      required this.file});
   final String image;
   final String name;
   final String length;
@@ -56,84 +61,103 @@ class SongWidget extends StatelessWidget {
         Spacer(),
         GestureDetector(
           onTap: () {
-            Utils.showBottomSheet(context: context,
-                isDismissible: true,
-                widget: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                color: backgroundColor,
+            Utils.showBottomSheet(
+              context: context,
+              isDismissible: true,
+              widget: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: backgroundColor,
+                ),
+                height: 120,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                        context.read<PlayerBloc>().add(OnPlayEvent(file: file));
+                        // Utils.go(
+                        //     context: context,
+                        //     screen: Player(
+                        //       file: file,
+                        //       image: image,
+                        //     ));
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircularSoftButton(
+                            radius: 25,
+                            padding: 0,
+                            icon: Center(
+                                child: SvgPicture.asset(
+                              AppSvg.play,
+                              width: 20,
+                              color: blueBackground,
+                            )),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text('Play')
+                        ],
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                        context
+                            .read<HomeBloc>()
+                            .add(AddToFavouriteEvent(file: file));
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircularSoftButton(
+                            radius: 25,
+                            padding: 0,
+                            icon: Center(
+                                child: Icon(
+                              Icons.favorite,
+                              color: blueBackground,
+                            )),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text('Add')
+                        ],
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                        context.read<HomeBloc>().add(AddToAlbum(file: file));
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircularSoftButton(
+                            radius: 25,
+                            padding: 0,
+                            icon: Center(
+                                child: Icon(
+                              Icons.album,
+                              color: blueBackground,
+                            )),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text('Album')
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              height: 120,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                          context
-                              .read<PlayerBloc>()
-                              .add(OnPlayEvent(file: file));
-                          // Utils.go(
-                          //     context: context,
-                          //     screen: Player(
-                          //       file: file,
-                          //       image: image,
-                          //     ));
-                        },
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircularSoftButton(
-                              radius: 25,
-                              padding: 0,
-                              icon: Center(child: SvgPicture.asset(AppSvg.play,width: 20,color: blueBackground,)),
-                            ),
-                            SizedBox(height: 10,),
-                            Text('Play')
-                          ],
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                          context.read<HomeBloc>().add(AddToFavouriteEvent(file: file));
-
-                        },
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircularSoftButton(
-                              radius: 25,
-                              padding: 0,
-                              icon: Center(child: Icon(Icons.favorite,color: blueBackground,)),
-                            ),
-                            SizedBox(height: 10,),
-                            Text('Add')
-                          ],
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                          context.read<HomeBloc>().add(AddToAlbum(file: file));
-                        },
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircularSoftButton(
-                              radius: 25,
-                              padding: 0,
-                              icon: Center(child: Icon(Icons.album,color: blueBackground,)),
-                            ),
-                            SizedBox(height: 10,),
-                            Text('Album')
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-            ),
             );
           },
           child: Padding(

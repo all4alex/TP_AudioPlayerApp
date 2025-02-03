@@ -2,11 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:music/bloc/boarding_bloc/boarding_bloc.dart';
-import 'package:music/bloc/boarding_bloc/boarding_event.dart';
-import 'package:music/view/onBoarding/components/first_page.dart';
-import 'package:music/view/onBoarding/components/second_page.dart';
-import 'package:music/view/onBoarding/components/third_page.dart';
+import 'package:thepause_audio_player_app/presentation/bloc/boarding_bloc/boarding_bloc.dart';
+import 'package:thepause_audio_player_app/presentation/bloc/boarding_bloc/boarding_event.dart';
+import 'package:thepause_audio_player_app/presentation/screens/onBoarding/components/first_page.dart';
+import 'package:thepause_audio_player_app/presentation/screens/onBoarding/components/second_page.dart';
+import 'package:thepause_audio_player_app/presentation/screens/onBoarding/components/third_page.dart';
 
 class OnBoarding extends StatelessWidget {
   const OnBoarding({super.key});
@@ -22,11 +22,13 @@ class OnBoarding extends StatelessWidget {
             filter: ImageFilter.blur(sigmaY: 10, sigmaX: 10),
             child: InkWell(
               onTap: () {
-                if(context.read<BoardingBLoc>().state.index<3){
+                if (context.read<BoardingBLoc>().state.index < 3) {
                   context.read<BoardingBLoc>().add(OnPageChangeEvent(
                       index: context.read<BoardingBLoc>().state.index + 1));
-                }else{
-                  context.read<BoardingBLoc>().add(LetsGoTapEvent(context: context));
+                } else {
+                  context
+                      .read<BoardingBLoc>()
+                      .add(LetsGoTapEvent(context: context));
                 }
               },
               child: Container(

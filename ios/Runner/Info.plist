@@ -45,5 +45,22 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	    <!-- Permission options for the `mediaLibrary` group -->
+    <key>NSAppleMusicUsageDescription</key>
+    <string>Music</string>
+    <key>kTCCServiceMediaLibrary</key>
+    <string>media</string>
+
+	<key>NSAppleMusicUsageDescription</key>
+	<string>We need access to your media library to play music.</string>
+
+	<key>NSMicrophoneUsageDescription</key>
+	<string>We need access to your microphone for audio features.</string>
+
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need access to your photo library to display album artwork.</string>
+
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>We need access to your speech recognition to search for songs.</string>		
 </dict>
 </plist>
