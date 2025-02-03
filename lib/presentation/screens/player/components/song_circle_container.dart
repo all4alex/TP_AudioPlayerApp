@@ -6,10 +6,11 @@ import 'package:music/model/audio_file_model.dart';
 
 import '../../../res/app_colors.dart';
 import '../../../res/app_svg.dart';
-import '../../common_widget/soft_button.dart';
+import '../../../common_widget/soft_button.dart';
 
 class SongCircleContainer extends StatelessWidget {
-  const SongCircleContainer({super.key, required this.file, required this.image});
+  const SongCircleContainer(
+      {super.key, required this.file, required this.image});
   final String image;
   final AudioFile file;
 

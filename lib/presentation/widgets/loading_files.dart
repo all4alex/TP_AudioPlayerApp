@@ -5,8 +5,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:layout_pro/responsive_layout.dart';
 import 'package:shimmer_effect/shimmer_effect.dart';
 
-import '../../res/app_colors.dart';
-import '../../res/app_svg.dart';
+import '../res/app_colors.dart';
+import '../res/app_svg.dart';
 
 class FilesLoading extends StatelessWidget {
   const FilesLoading({super.key});
@@ -27,7 +27,7 @@ class FilesLoading extends StatelessWidget {
       desktopScreenCrossAxisCount: 4,
       builder: (context, index) {
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: Container(
             alignment: Alignment.center,
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -36,9 +36,13 @@ class FilesLoading extends StatelessWidget {
               borderRadius: BorderRadius.circular(5),
               boxShadow: [
                 BoxShadow(
-                    color: shadowColor, offset: const Offset(8, 6), blurRadius: 12),
+                    color: shadowColor,
+                    offset: const Offset(8, 6),
+                    blurRadius: 12),
                 const BoxShadow(
-                    color: Colors.white, offset: Offset(-8, -6), blurRadius: 12),
+                    color: Colors.white,
+                    offset: Offset(-8, -6),
+                    blurRadius: 12),
               ],
             ),
             child: ShimmerEffect(
@@ -63,9 +67,8 @@ class FilesLoading extends StatelessWidget {
                           width: 150,
                           height: 8,
                           decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10)
-                          ),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10)),
                         ),
                         const SizedBox(
                           height: 8,
@@ -74,9 +77,8 @@ class FilesLoading extends StatelessWidget {
                           width: 50,
                           height: 7,
                           decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10)
-                          ),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10)),
                         ),
                       ],
                     ),

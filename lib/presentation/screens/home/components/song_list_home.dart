@@ -5,7 +5,8 @@ import 'package:music/view/all_music/components/song_list.dart';
 import '../../../bloc/album_bloc/album_bloc.dart';
 import '../../../bloc/album_bloc/album_event.dart';
 import '../../../bloc/album_bloc/album_state.dart';
-import '../../common_widget/app_bar.dart';
+import '../../../common_widget/app_bar.dart';
+
 class SongListFolder extends StatelessWidget {
   const SongListFolder({super.key});
   @override
@@ -18,10 +19,9 @@ class SongListFolder extends StatelessWidget {
         //       BackArrowTap(context: context)
         //   );
         // },
-        onPopInvoked: (didPop) {
-
-        },
-        child: SafeArea(child: Column(
+        onPopInvoked: (didPop) {},
+        child: SafeArea(
+            child: Column(
           children: [
             const SizedBox(
               height: 30,
@@ -29,13 +29,16 @@ class SongListFolder extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: BlocBuilder<AlbumBloc, AlbumState>(
-                buildWhen: (previous, current) => previous.appBarTitle!=current.appBarTitle,
+                buildWhen: (previous, current) =>
+                    previous.appBarTitle != current.appBarTitle,
                 builder: (context, state) {
                   return CustomAppBar(
                     title: state.appBarTitle,
                     preIcon: GestureDetector(
                       onTap: () {
-                        context.read<AlbumBloc>().add(BackArrowTap(context: context));
+                        context
+                            .read<AlbumBloc>()
+                            .add(BackArrowTap(context: context));
                         Navigator.pop(context);
                       },
                       child: const Icon(
