@@ -9,8 +9,24 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  cupertino_icons: ^1.0.8
+  
   flutter_clean_architecture: ^6.0.1
   mockito: ^5.4.4
+  shared_preferences:
+  bloc:
+  flutter_bloc:
+  equatable:
+  google_fonts:
+  flutter_svg:
+  sqflite:
+  path_provider:
+  path:
+  permission_handler:
+  just_audio:
+  on_audio_query:
+  layout_pro:
+  shimmer_effect:
 
 dev_dependencies:
   flutter_test:
@@ -20,3 +36,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+
+  assets:
+    - assets/images/
+    - assets/svgs/
+    - assets/icons/
